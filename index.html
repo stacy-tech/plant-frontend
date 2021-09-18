@@ -11,17 +11,24 @@
     <h1 class="title">Welcome to PlantScape</h1>
     <h2>Bring the outdoors in with lush and leafy plants to every room in your home.</h2>
 
-    <div class="container">
-        <div id="new-plant-container">
-            <form id="new-plant-form">
-                <input type="text" id="new-plant-body" name="plant-body">
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-        <div id="plants-container"></div>
+    <div class="app-content">
+        <div id="myApp" class="app">
+            <div id="-plant-main"></div>
+        </div>  
+    </div>
+    <div id="main">
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name">
+            <input type="submit" value="Submit">
+        </form>
     </div>
 
+    <script src="./src/components/plant.js"></script>
     <script src="./src/services/ApiService.js"></script>
+    <!-- <script src="./src/services/ApiService.js"></script> -->
+    <script src="./src/index.js"></script>
+    <script src="./src/components/app.js"></script>
     
 </body>
 </html>
