@@ -10,6 +10,18 @@
 <body>
     <h1 class="title">Welcome to PlantScape</h1>
     <h2>Bring the outdoors in with lush and leafy plants to every room in your home.</h2>
+
+    <div class="container">
+        <div id="new-plant-container">
+            <form id="new-plant-form">
+                <input type="text" id="new-plant-body" name="plant-body">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div id="plants-container"></div>
+    </div>
+
+    <script src="./src/services/ApiService.js"></script>
     
 </body>
 </html>
