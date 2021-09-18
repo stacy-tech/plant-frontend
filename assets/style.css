@@ -1,0 +1,11 @@
+:root {
+    --bg-color: white;
+    --main-color: #006400
+    
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--main-color);
+    text-align: center;
+}
