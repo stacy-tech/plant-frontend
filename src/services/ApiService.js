@@ -1,36 +1,21 @@
 class ApiService {
 
     constructor() {
-        this.baseUrl = "http://localhost:3000/plants"
+        this.baseUrl = "http://localhost:3000"
     }
 
-    getPlants() {
-        fetch(this.baseUrl + "/plants")
-        .then(res => res.json())
-        .then(plants => plants.forEach(plant => renderPlants(plant)))
-    }
-
-    CreatePlant = (newPlant) => {
-        newPlant.user_id = user.user_id
+    getPlants = () => fetch(this.baseUrl + "/plants").then(res => res.json())
+    
+    createPlants = (newPlant) => {
+        newPlant.user_id = user.id 
         return fetch(this.baseUrl + "/plants", {
-            method: "POST", 
+            method: 'POST', 
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(newPlant),
+            body: JSON.stringify(newPlant), 
         })
         .then(response => response.json())
     }
-
-    // findOrCreateUser = (name) => {
-    //     return fetch(this.baseUrl + "/users", {
-    //         method: "POST", 
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({name: name}),
-    //     })
-    //     .then(response => response.json())
-    // }
 
 }
