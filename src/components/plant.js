@@ -26,15 +26,30 @@ class Plant {
     // clicks on either the name or image and will produce the plants id 
     static handlePlantClick = (e) => {
         if (e.target.tagName == "IMG" || e.target.classList.contains("title")) {
+            const id = e.target.closest(".plant-card").dataset.id
             this.find(id).renderShow()
         }
+    }
+
+    // upon clicking a plant it renders to its show page with its data/info
+    // replaceing the innerHTML with this new one
+    renderShow = () => {
+        const {name, difficulty, light, water, image_url} = this.data
+        document.getElementById("main").innerHTML = `
+        <div class="show">
+            <h1>${name}</h1>
+            <img src="${image_url}" alt=${name}/>
+            <p>${difficulty}</p>
+            <p>${light}</p>
+            <p>${water}</p>
+        </div> `
+
     }
 
     // rendering my plants into the main container onto the page whilst creating our own elements
     static renderPlants = () => {
         const plantContainer = document.createElement("div")
         plantContainer.id = "plant-container"
-        // plantContainer.classList.add("plant-container")
         document.getElementById("main").appendChild(plantContainer)
         this.all.forEach(plant => plant.renderCard())
         plantContainer.addEventListener("click", this.handlePlantClick)
