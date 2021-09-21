@@ -42,7 +42,12 @@ class Plant {
             <p>${difficulty}</p>
             <p>${light}</p>
             <p>${water}</p>
-        </div> `
+        </div>
+        <br>
+        <button id="home">Home</button>
+        `
+        document.getElementById("home").addEventListener("click", Plant.renderPlants)
+
 
     }
 
