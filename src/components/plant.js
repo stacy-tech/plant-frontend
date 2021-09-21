@@ -20,10 +20,13 @@ class Plant {
         </div>`
     }
 
+    // finding the instance of a plant
+    static find = (id) => this.all.find(plant => plant.data.id == id) 
+
     // clicks on either the name or image and will produce the plants id 
     static handlePlantClick = (e) => {
         if (e.target.tagName == "IMG" || e.target.classList.contains("title")) {
-            console.log(e.target.closest(".plant-card").dataset.id)
+            this.find(id).renderShow()
         }
     }
 
