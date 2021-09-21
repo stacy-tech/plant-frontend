@@ -1,38 +1,44 @@
 class Plant {
 
-    // plant data
+    // plant data(storing all my plants in static all)
     static all = []
     constructor(data){
         this.data = data
         this.constructor.all.push(this)
     }
 
-    // renderCard method
+    // renderCard method (appending my plants innerhtml)
     renderCard = () => {
-        const {name, difficulty, light, water, imageUrl, user_id} = this.data
-        document.querySelector(".plant-container").innerHTML += `
-        <div class="plant-card">
-            <img src=${imageUrl} alt=${name}/>
+        const {name, difficulty, light, water, image_url, id } = this.data
+        document.getElementById("plant-container").innerHTML += `
+        <div class="plant-card" data-id=${id}>
+            <img src=${image_url} alt=${name}/>
             <p class="title">${name}<p>
             <p>${difficulty}</p>
+            <p>${light}</p>
+            <p>${water}</p>
         </div>`
     }
 
-    // adding my Plants
-    // static addPlant(plant){
-    //     new Plant(plant)
-    // }
-
-    // rendering my plants into the main container onto the page whilst creating our own elements
-    static renderPlants(){
-        const plantContainer = document.createElement("div")
-        plantContainer.classList.add("plant-container")
-        document.getElementById("main").appendChild(plantContainer)
-        this.all.forEach(plant => plant.renderCard())
+    // clicks on either the name or image and will produce the plants id 
+    static handlePlantClick = (e) => {
+        if (e.target.tagName == "IMG" || e.target.classList.contains("title")) {
+            console.log(e.target.closest(".plant-card").dataset.id)
+        }
     }
 
-    // Getting my plant
-    static getPlants(){
+    // rendering my plants into the main container onto the page whilst creating our own elements
+    static renderPlants = () => {
+        const plantContainer = document.createElement("div")
+        plantContainer.id = "plant-container"
+        // plantContainer.classList.add("plant-container")
+        document.getElementById("main").appendChild(plantContainer)
+        this.all.forEach(plant => plant.renderCard())
+        plantContainer.addEventListener("click", this.handlePlantClick)
+    }
+
+    // Getting my plants (iterating from the api)
+    static getPlants = () => {
         api.getPlants().then(plants => {
             plants.forEach(plant => new Plant(plant))
             this.renderPlants()
