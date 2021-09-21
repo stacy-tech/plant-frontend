@@ -23,6 +23,25 @@ class Plant {
     // finding the instance of a plant
     static find = (id) => this.all.find(plant => plant.data.id == id) 
 
+    // Getting my plants (iterating from the api)
+    static getPlants = () => {
+        api.getPlants().then(plants => {
+            plants.forEach(plant => new Plant(plant))
+            this.renderPlants()
+        })
+    }
+
+    // rendering my plants into the main container onto the page whilst creating my own elements
+    // cleared out my ordinary html and replaced it with new ones upon returning home 
+    static renderPlants = () => {
+        const main = document.getElementById("main")
+        main.innerHTML = ""
+        const plantContainer = document.createElement("div")
+        plantContainer.id = "plant-container"
+        main.appendChild(plantContainer)
+        this.all.forEach(plant => plant.renderCard())
+        plantContainer.addEventListener("click", this.handlePlantClick)
+    }
     // clicks on either the name or image and will produce the plants id 
     static handlePlantClick = (e) => {
         if (e.target.tagName == "IMG" || e.target.classList.contains("title")) {
@@ -47,52 +66,6 @@ class Plant {
         <button id="home">Home</button>
         `
         document.getElementById("home").addEventListener("click", Plant.renderPlants)
-
-
     }
-
-    // rendering my plants into the main container onto the page whilst creating my own elements
-    // cleared out my ordinary html and replaced it with new ones upon returning home 
-    static renderPlants = () => {
-        const main = document.getElementById("main")
-        main.innerHTML = ""
-        const plantContainer = document.createElement("div")
-        plantContainer.id = "plant-container"
-        main.appendChild(plantContainer)
-        this.all.forEach(plant => plant.renderCard())
-        plantContainer.addEventListener("click", this.handlePlantClick)
-    }
-
-    // Getting my plants (iterating from the api)
-    static getPlants = () => {
-        api.getPlants().then(plants => {
-            plants.forEach(plant => new Plant(plant))
-            this.renderPlants()
-        })
-    }
-    
-    // static plants = []
-    // constructor({name, difficulty, light, water, image_url, user_id }) {
-    //     this.name = name
-    //     this.difficulty = difficulty
-    //     this.light = light
-    //     this.water = water
-    //     this.image_url = image_url
-    //     this.user_id = user_id
-    //     Plant.plants.push(this)
-        
-    // }
-
-    // render() {
-    //     const div = document.createElement("div")
-    //     const h2 = document.createElement("h2")
-    //     const p = document.createElement("p")
-    //     div.id = `plant-${this.name}`
-    //     div.appendChild(h2)
-    //     div.appendChild(p)
-    //     div.addEventListener("click", this.plant)
-
-    //     document.querySelector(".container").appendChild(div)
-
-    // }
+      
 }
