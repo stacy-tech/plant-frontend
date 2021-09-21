@@ -51,11 +51,14 @@ class Plant {
 
     }
 
-    // rendering my plants into the main container onto the page whilst creating our own elements
+    // rendering my plants into the main container onto the page whilst creating my own elements
+    // cleared out my ordinary html and replaced it with new ones upon returning home 
     static renderPlants = () => {
+        const main = document.getElementById("main")
+        main.innerHTML = ""
         const plantContainer = document.createElement("div")
         plantContainer.id = "plant-container"
-        document.getElementById("main").appendChild(plantContainer)
+        main.appendChild(plantContainer)
         this.all.forEach(plant => plant.renderCard())
         plantContainer.addEventListener("click", this.handlePlantClick)
     }
