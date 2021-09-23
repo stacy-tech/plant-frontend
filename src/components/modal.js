@@ -1,15 +1,15 @@
 class Modal {
 
-    get model(){
-        document.querySelector("#myModal")
+    get modal(){
+        return document.querySelector("#myModal")
     }
 
     open = () => {
-        this.model.style.display = "block"
+        this.modal.style.display = "block"
     }
 
     close = () => {
-        this.model.style.display = "none"
+        this.modal.style.display = "none"
     }
 
 }
