@@ -23,6 +23,7 @@ class Plant {
     // add new plant form
     static addPlantForm = () => {
         modal.main.innerHTML += `
+        <h1>Go Green</h1>
         <form>
             <label for="name">Name:</label><br>
             <input type="text" name="name"><br>
@@ -59,7 +60,7 @@ class Plant {
         const plantContainer = document.createElement("div")
         plantContainer.id = "plant-container"
         const addPlant = document.createElement("button")
-        addPlant.innerText = "Add a New Plant"
+        addPlant.innerText = "New Plant"
         addPlant.addEventListener("click", this.addPlantForm)
         // append is used to add multiply arguments
         main.append(plantContainer, addPlant) 

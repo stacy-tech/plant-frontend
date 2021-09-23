@@ -27,7 +27,6 @@ class Modal {
                 this.close()
             }
         })
-
     }
 
 }
