@@ -1,5 +1,9 @@
 class Modal {
 
+    constructor() {
+        this.addCloseEventListener()
+    }
+
     get modal(){
         return document.querySelector("#myModal")
     }
@@ -10,6 +14,15 @@ class Modal {
 
     close = () => {
         this.modal.style.display = "none"
+    }
+
+    addCloseEventListener = () => {
+        this.modal.addEventListener("click", (e) => {
+            if (e.target.classList.contains("close")){
+                this.close()
+            }
+        })
+
     }
 
 }
