@@ -11,7 +11,14 @@
     <h1 class="title">Welcome to PlantScape</h1>
     <h2>Bring the outdoors in with lush and leafy plants to every room in your home.</h2>
     <br><br>
-    
+    <!-- model div for users to add a plant -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>   
+    </div>
+    <!-- div/container where all my plants from the api was stored -->
     <div id ="main"></div>
 
     
@@ -19,7 +26,7 @@
 
     <script src="./src/components/plant.js"></script>
     <script src="./src/adapters/plantApi.js"></script>
-    <!-- <script src="./src/components/app.js"></script> -->
+    <script src="./src/components/modal.js"></script>
     <script src="./src/index.js"></script>
     
 </body>
