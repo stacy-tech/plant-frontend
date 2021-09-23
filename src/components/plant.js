@@ -20,6 +20,26 @@ class Plant {
         </div>`
     }
 
+    // add new plant form
+    static addPlantForm = () => {
+        modal.main.innerHTML += `
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" name="name"><br>
+            <label for="difficulty">Difficulty:</label><br>
+            <input type="text" name="difficulty"><br>
+            <label for="light">Light:</label><br>
+            <input type="text" name="light"><br>
+            <label for="water">Water:</label><br>
+            <input type="text" name="water"><br>
+            <label for="image_url">Image:</label><br>
+            <input type="text" name="image_url"><br><br>
+            <input type="submit" value="Add Plant"><br>
+        </form>
+        `
+        modal.open()
+    }
+
     // finding the instance of a plant
     static find = (id) => this.all.find(plant => plant.data.id == id) 
 
@@ -40,7 +60,7 @@ class Plant {
         plantContainer.id = "plant-container"
         const addPlant = document.createElement("button")
         addPlant.innerText = "Add a New Plant"
-        addPlant.addEventListener("click", modal.open)
+        addPlant.addEventListener("click", this.addPlantForm)
         // append is used to add multiply arguments
         main.append(plantContainer, addPlant) 
         this.all.forEach(plant => plant.renderPlantCard())
