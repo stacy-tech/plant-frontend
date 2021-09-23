@@ -7,8 +7,8 @@ class Plant {
         this.constructor.all.push(this)
     }
 
-    // renderCard method (appending my plants innerhtml)
-    renderCard = () => {
+    // renderPlantCard method (appending my plants innerhtml)
+    renderPlantCard = () => {
         const {name, difficulty, light, water, image_url, id } = this.data
         document.getElementById("plant-container").innerHTML += `
         <div class="plant-card" data-id=${id}>
@@ -38,8 +38,12 @@ class Plant {
         main.innerHTML = ""
         const plantContainer = document.createElement("div")
         plantContainer.id = "plant-container"
-        main.appendChild(plantContainer)
-        this.all.forEach(plant => plant.renderCard())
+        const addPlant = document.createElement("button")
+        addPlant.innerText = "Add a New Plant"
+        addPlant.addEventListener("click", modal.open)
+        // append is used to add multiply arguments
+        main.append(plantContainer, addPlant) 
+        this.all.forEach(plant => plant.renderPlantCard())
         plantContainer.addEventListener("click", this.handlePlantClick)
     }
     // clicks on either the name or image and will produce the plants id 
