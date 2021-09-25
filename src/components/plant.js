@@ -30,8 +30,11 @@ class Plant {
             water: e.target.water.value,
             image_url: e.target.image_url.value
         }
-        console.log(newPlant)
-        
+        api.createPlant(newPlant).then(plant => {
+            new Plant(plant).renderPlantCard()
+        })
+        modal.close()
+        e.target.reset()
     }
 
     // add new plant form
@@ -95,7 +98,7 @@ class Plant {
     renderShow = () => {
         const {name, difficulty, light, water, image_url} = this.data
         document.getElementById("main").innerHTML = `
-        <div class="show">
+        <div class="show"> 
             <h1>${name}</h1>
             <img src="${image_url}" alt=${name}/>
             <p>${difficulty}</p>
