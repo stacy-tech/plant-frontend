@@ -39,7 +39,7 @@ class Plant {
 
     // add new plant form
     static addPlantForm = () => {
-        modal.main.innerHTML += `
+        modal.main.innerHTML = `
         <h1>Go Green</h1>
         <form>
             <label for="name">Name:</label><br>
