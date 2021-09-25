@@ -19,6 +19,19 @@ class Plant {
             <p>${water}</p>
         </div>`
     }
+    
+    // submits my new plant form to send to my backend
+    static handlesubmit = (e) => {
+        e.preventDefault()
+        const newPlant = {
+            name: e.target.name.value,
+            difficulty: e.target.difficulty.value,
+            light: e.target.light.value,
+            water: e.target.water.value,
+            image_url: e.target.image_url.value
+        }
+        console.log(newPlant)
+    }
 
     // add new plant form
     static addPlantForm = () => {
@@ -38,6 +51,7 @@ class Plant {
             <input type="submit" value="Add Plant"><br>
         </form>
         `
+        modal.main.querySelector("form").addEventListener("submit", this.handlesubmit)
         modal.open()
     }
 
