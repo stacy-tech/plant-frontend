@@ -31,6 +31,7 @@ class Plant {
             image_url: e.target.image_url.value
         }
         console.log(newPlant)
+        
     }
 
     // add new plant form
