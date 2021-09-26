@@ -4,6 +4,7 @@ class Plant {
     static all = []
     constructor(data){
         this.data = data
+        this.comments = this.data.comments.map(comment => new Comment(comment))
         this.constructor.all.push(this)
     }
 
@@ -104,11 +105,13 @@ class Plant {
             <p>${difficulty}</p>
             <p>${light}</p>
             <p>${water}</p>
+            <div class="container"></div>
         </div>
         <br>
         <button id="home">Home</button>
         `
         document.getElementById("home").addEventListener("click", Plant.renderPlants)
+        this.comments.forEach(comment => comment.render())
     }
       
 }
