@@ -18,6 +18,7 @@ class Plant {
             <p>${difficulty}</p>
             <p>${light}</p>
             <p>${water}</p>
+            <p>Number of Comments: ${this.comments.length}</p>
         </div>`
     }
     
