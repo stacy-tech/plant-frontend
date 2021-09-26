@@ -98,7 +98,7 @@ class Plant {
     // upon clicking a plant it renders to its show page with its data/info
     // replaceing the innerHTML with this new one
     renderShow = () => {
-        const {name, difficulty, light, water, image_url} = this.data
+        const {name, difficulty, light, water, image_url, user} = this.data
         document.getElementById("main").innerHTML = `
         <div class="show"> 
             <h1>${name}</h1>
@@ -106,6 +106,7 @@ class Plant {
             <p>${difficulty}</p>
             <p>${light}</p>
             <p>${water}</p>
+            <p>Listed by: ${user}</p>
             <div class="container"></div>
         </div>
         <br>
@@ -113,6 +114,7 @@ class Plant {
         `
         document.getElementById("home").addEventListener("click", Plant.renderPlants)
         this.comments.forEach(comment => comment.render())
+        
     }
       
 }

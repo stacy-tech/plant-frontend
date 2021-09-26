@@ -19,7 +19,13 @@
         </div>   
     </div>
     <!-- div/container where all my plants from the api was stored -->
-    <div id ="main"></div>
+    <div id ="main">
+        <form>
+            <label for="user">User:</label><br>
+            <input type="text" id="user" name="user">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 
     <script src="./src/adapters/plantApi.js"></script>
     <script src="./src/components/plant.js"></script>
