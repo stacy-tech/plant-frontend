@@ -1,6 +1,7 @@
 
 const api = new PlantApi("http://localhost:3000")
 const modal = new Modal()
+let user
 
 // Plant.getPlants()
 
@@ -9,5 +10,10 @@ document.querySelector("form").addEventListener("submit", handleUserSubmit)
 
 function handleUserSubmit(e){
     e.preventDefault()
-    console.log(e.target.user.value)
+    document.getElementById("main").innerHTML = ""
+    api.findOrCreateUser(e.target.user.value).then(userData => {
+        user = userData
+        Plant.getPlants()
+    })
 }
+

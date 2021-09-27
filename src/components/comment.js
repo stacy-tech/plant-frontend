@@ -1,7 +1,7 @@
 class Comment {
 
     constructor(data){
-        this.data = data   
+        this.data = data     
     }
     
     // rendering comments 

@@ -67,6 +67,7 @@ class Plant {
     // Getting my plants (iterating from the api)
     static getPlants = () => {
         api.getPlants().then(plants => {
+            Plant.all = []
             plants.forEach(plant => new Plant(plant))
             this.renderPlants()
         })
@@ -110,11 +111,14 @@ class Plant {
             <div class="container"></div>
         </div>
         <br>
-        <button id="home">Home</button>
+        <button id="delete">Delete Plant</button>
+        <br><br>
+        <button id="home">Home</button><br>
         `
         document.getElementById("home").addEventListener("click", Plant.renderPlants)
-        this.comments.forEach(comment => comment.render())
-        
+        // document.getElementById("delete").addEventListener("click", Plant.renderPlants)
+        this.comments.forEach(comment => comment.render())   
     }
+
       
 }
