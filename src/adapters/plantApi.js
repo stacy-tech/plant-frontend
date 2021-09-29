@@ -8,7 +8,7 @@ class PlantApi {
 
     // post a new plant created from the form
     createPlant = (newPlant) => {
-        newPlant.user = user
+        // newPlant.user = user
         newPlant.user_id = user.id
         return fetch(this.baseUrl + "/plants", {
             method: 'POST', 
@@ -33,17 +33,16 @@ class PlantApi {
     }
 
     // delete plant request
-    // static handleDelete = (e) => {
-    //     fetch(this.baseUrl + `/plants/${id}`, {
-    //         method: 'DELETE', 
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //         .then(res => res.json())
-    //         .then(data => deletePlant(id))      
-    //     })
-    //     // console.log("deleted!")
-    // }
+    deletePlant(id){
+        fetch(this.baseUrl + `/plants/${id}`, {
+            method: 'DELETE',  
+        })
+        .then(res => res.json())
+        .then(obj => {
+            console.log(obj);
+            alert('Plant was deleted');
+        })
+    }
 
 }
 

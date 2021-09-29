@@ -115,8 +115,8 @@ class Plant {
         <br><br>
         <button id="home">Home</button><br>
         `
+        document.getElementById("delete").addEventListener("click", Plant.renderPlants)
         document.getElementById("home").addEventListener("click", Plant.renderPlants)
-        // document.getElementById("delete").addEventListener("click", Plant.renderPlants)
         this.comments.forEach(comment => comment.render())   
     }
 

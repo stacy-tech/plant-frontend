@@ -23,7 +23,7 @@ class Modal {
 
     addCloseEventListener = () => {
         this.modal.addEventListener("click", (e) => {
-            if (e.target.classList.contains("close")){
+            if (e.target.classList.contains("close") || e.target.id == "myModal"){
                 this.close()
             }
         })
