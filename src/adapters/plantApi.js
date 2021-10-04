@@ -8,8 +8,9 @@ class PlantApi {
 
     // post a new plant created from the form
     createPlant = (newPlant) => {
+        // console.log('new plant: ', newPlant)
         // newPlant.user = user
-        newPlant.user_id = user.id
+        //newPlant.user_id = user.id
         return fetch(this.baseUrl + "/plants", {
             method: 'POST', 
             headers: {
@@ -22,6 +23,7 @@ class PlantApi {
 
     // fetch request to create/find a user if already existed
     findOrCreateUser = (user) => {
+        // console.log('find or create user', user)
         return fetch(this.baseUrl + "/users", {
             method: 'POST', 
             headers: {
@@ -33,16 +35,17 @@ class PlantApi {
     }
 
     // delete plant request
-    deletePlant(id){
-        fetch(this.baseUrl + `/plants/${id}`, {
-            method: 'DELETE',  
-        })
-        .then(res => res.json())
-        .then(obj => {
-            console.log(obj);
-            alert('Plant was deleted');
-        })
-    }
+    // deletePlant(id){
+        
+    //     fetch(this.baseUrl + `/plants/${id}`, {
+    //         method: 'DELETE',  
+    //     })
+    //     .then(res => res.json())
+    //     .then(obj => {
+    //         console.log(obj);
+    //         alert('Plant was deleted');
+    //     })
+    // }
 
 }
 

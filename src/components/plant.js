@@ -1,10 +1,9 @@
 class Plant {
 
-    // plant data(storing all my plants in static all)
     static all = []
     constructor(data){
         this.data = data
-        this.comments = this.data.comments.map(comment => new Comment(comment))
+        // this.comments = this.data.comments.map(comment => new Comment(comment))
         this.constructor.all.push(this)
     }
 
@@ -18,21 +17,28 @@ class Plant {
             <p>${difficulty}</p>
             <p>${light}</p>
             <p>${water}</p>
-            <p>Number of Comments: ${this.comments.length}</p>
+            
         </div>`
+        // <p>Number of Comments: ${this.comments.length}</p>
     }
     
     // submits my new plant form to send to my backend
     static handlesubmit = (e) => {
         e.preventDefault()
+        console.log('handle submit user: ', Plant.user)
         const newPlant = {
+            id: this.all.length + 1,
             name: e.target.name.value,
             difficulty: e.target.difficulty.value,
             light: e.target.light.value,
             water: e.target.water.value,
-            image_url: e.target.image_url.value
+            image_url: e.target.image_url.value,
+            user: Plant.user.name
         }
+        console.log('new plant obj handle submit')
+        console.log(newPlant)
         api.createPlant(newPlant).then(plant => {
+            console.log('create plant response ', plant)
             new Plant(plant).renderPlantCard()
         })
         modal.close()
@@ -68,6 +74,7 @@ class Plant {
     static getPlants = () => {
         api.getPlants().then(plants => {
             Plant.all = []
+            // console.log('get plants api call: ', plants)
             plants.forEach(plant => new Plant(plant))
             this.renderPlants()
         })
@@ -80,6 +87,7 @@ class Plant {
         main.innerHTML = ""
         const plantContainer = document.createElement("div")
         plantContainer.id = "plant-container"
+        plantContainer.classList.add("container")
         const addPlant = document.createElement("button")
         addPlant.innerText = "New Plant"
         addPlant.addEventListener("click", this.addPlantForm)
@@ -92,6 +100,7 @@ class Plant {
     static handlePlantClick = (e) => {
         if (e.target.tagName == "IMG" || e.target.classList.contains("title")) {
             const id = e.target.closest(".plant-card").dataset.id
+            // console.log('id for handle plant click: ', id)
             this.find(id).renderShow()
         }
     }
@@ -117,7 +126,7 @@ class Plant {
         `
         document.getElementById("delete").addEventListener("click", Plant.renderPlants)
         document.getElementById("home").addEventListener("click", Plant.renderPlants)
-        this.comments.forEach(comment => comment.render())   
+        // this.comments.forEach(comment => comment.render())   
     }
 
       
