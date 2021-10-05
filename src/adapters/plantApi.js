@@ -7,19 +7,16 @@ class PlantApi {
     getPlants = () => fetch(this.api + "/plants").then(res => res.json())  
 
     // post a new plant created from the form
-    // createPlant = (newPlant) => {
-        // console.log('new plant: ', newPlant)
-        // newPlant.user = user
-        // newPlant.user_id = user.id
-    //     return fetch(this.baseUrl + "/plants", {
-    //         method: 'POST', 
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(newPlant),
-    //     })
-    //     .then(response => response.json())
-    // }
+    createPlant = (newPlant) => {
+        return fetch(this.api + "/plants", {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newPlant),
+        })
+        .then(response => response.json())
+    }
 
     // fetch request to create/find a user if already existed
     // findOrCreateUser = (user) => {

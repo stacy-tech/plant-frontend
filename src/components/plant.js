@@ -32,14 +32,11 @@ class Plant {
             water: e.target.water.value,
             image_url: e.target.imageUrl.value,   
         }
-        console.log(newPlant)
-        
-        // api.createPlant(newPlant).then(plant => {
-            
-        //     new Plant(plant).renderPlantCard()
-        // })
-        // modal.close()
-        // e.target.reset()
+        api.createPlant(newPlant).then(plant => {
+            new Plant(plant).renderPlantCard()
+        })
+        modal.close()
+        e.target.reset()   
     }
 
     // add new plant form
