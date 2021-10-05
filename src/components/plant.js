@@ -1,9 +1,10 @@
 class Plant {
 
     static all = []
+
     constructor(data){
         this.data = data
-        // this.comments = this.data.comments.map(comment => new Comment(comment))
+        this.comments = this.data.comments.map(comment => new Comment(comment))
         this.constructor.all.push(this)
     }
 
@@ -19,8 +20,12 @@ class Plant {
             <p>${water}</p>
             
         </div>`
-        // <p>Number of Comments: ${this.comments.length}</p>
     }
+
+    // renderCommentForm = () => {
+    //     console.log("will render comment data")
+        
+    // }
     
     // submits my new plant form to send to my backend
     static handlesubmit = (e) => {
@@ -92,9 +97,8 @@ class Plant {
     static handlePlantClick = (e) => {
         if (e.target.tagName == "IMG" || e.target.classList.contains("title")) {
             const id = e.target.closest(".plant-card").dataset.id
-            // console.log('id for handle plant click: ', id)
             this.find(id).renderShow()
-        }
+        }    
     }
 
     // upon clicking a plant it renders to its show page with its data/info
@@ -110,13 +114,17 @@ class Plant {
             <p>${water}</p>
             <div class="container"></div>
         </div>
-        <br>
+        <br><br>
+        <p class="add-comment">Add New Comment</p>
         <br><br>
         <button id="home">Home</button><br>
         `
-        // document.getElementById("delete").addEventListener("click", Plant.renderPlants)
         document.getElementById("home").addEventListener("click", Plant.renderPlants)
-        // this.comments.forEach(comment => comment.render())   
+        this.comments.forEach(comment => comment.render())  
+        
+        
+        
+        
     }
 
       
