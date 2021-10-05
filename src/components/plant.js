@@ -23,46 +23,46 @@ class Plant {
     }
     
     // submits my new plant form to send to my backend
-    // static handlesubmit = (e) => {
-    //     e.preventDefault()
-    //     const newPlant = {
-            
-    //         name: e.target.name.value,
-    //         difficulty: e.target.difficulty.value,
-    //         light: e.target.light.value,
-    //         water: e.target.water.value,
-    //         image_url: e.target.image_url.value,   
-    //     }
+    static handlesubmit = (e) => {
+        e.preventDefault()
+        const newPlant = {
+            name: e.target.name.value,
+            difficulty: e.target.difficulty.value,
+            light: e.target.light.value,
+            water: e.target.water.value,
+            image_url: e.target.imageUrl.value,   
+        }
+        console.log(newPlant)
         
-    //     api.createPlant(newPlant).then(plant => {
+        // api.createPlant(newPlant).then(plant => {
             
-    //         new Plant(plant).renderPlantCard()
-    //     })
-    //     modal.close()
-    //     e.target.reset()
-    // }
+        //     new Plant(plant).renderPlantCard()
+        // })
+        // modal.close()
+        // e.target.reset()
+    }
 
     // add new plant form
-    // static addPlantForm = () => {
-    //     modal.main.innerHTML = `
-    //     <h1>Go Green</h1>
-    //     <form>
-    //         <label for="name">Name:</label><br>
-    //         <input type="text" name="name"><br>
-    //         <label for="difficulty">Difficulty:</label><br>
-    //         <input type="text" name="difficulty"><br>
-    //         <label for="light">Light:</label><br>
-    //         <input type="text" name="light"><br>
-    //         <label for="water">Water:</label><br>
-    //         <input type="text" name="water"><br>
-    //         <label for="image_url">Image:</label><br>
-    //         <input type="text" name="image_url"><br><br>
-    //         <input type="submit" value="Add Plant"><br>
-    //     </form>
-    //     `
-    //     modal.main.querySelector("form").addEventListener("submit", this.handlesubmit)
-    //     modal.open()
-    // }
+    static addPlantForm = () => {
+        modal.main.innerHTML = `
+        <h1>Go Green</h1>
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" name="name"><br>
+            <label for="difficulty">Difficulty:</label><br>
+            <input type="text" name="difficulty"><br>
+            <label for="light">Light:</label><br>
+            <input type="text" name="light"><br>
+            <label for="water">Water:</label><br>
+            <input type="text" name="water"><br>
+            <label for="imageUrl">Image:</label><br>
+            <input type="text" name="imageUrl"><br><br>
+            <input type="submit" value="Add Plant"><br>
+        </form>
+        `
+        modal.main.querySelector("form").addEventListener("submit", this.handlesubmit)
+        modal.open()
+    }
 
     // finding the instance of a plant
     static find = (id) => this.all.find(plant => plant.data.id == id) 
@@ -84,7 +84,7 @@ class Plant {
         plantContainer.id = "plant-container"
         plantContainer.classList.add("container")
         const addPlant = document.createElement("button")
-        addPlant.innerText = "New Plant"
+        addPlant.innerText = "Add New Plant"
         addPlant.addEventListener("click", this.addPlantForm)
         // append is used to add multiply arguments
         main.append(plantContainer, addPlant) 
