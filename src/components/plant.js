@@ -4,7 +4,7 @@ class Plant {
 
     constructor(data){
         this.data = data
-        this.comments = this.data.comments.map(comment => new Comment(comment))
+        this.comments = this.data.comments.map(comment => new Comment(comment, this))
         this.constructor.all.push(this)
     }
 
@@ -21,11 +21,6 @@ class Plant {
             
         </div>`
     }
-
-    // renderCommentForm = () => {
-    //     console.log("will render comment data")
-        
-    // }
     
     // submits my new plant form to send to my backend
     static handlesubmit = (e) => {
@@ -98,7 +93,7 @@ class Plant {
         if (e.target.tagName == "IMG" || e.target.classList.contains("title")) {
             const id = e.target.closest(".plant-card").dataset.id
             this.find(id).renderShow()
-        }    
+        }     
     }
 
     // upon clicking a plant it renders to its show page with its data/info
@@ -120,12 +115,8 @@ class Plant {
         <button id="home">Home</button><br>
         `
         document.getElementById("home").addEventListener("click", Plant.renderPlants)
-        this.comments.forEach(comment => comment.render())  
-        
-        
-        
+        this.comments.forEach(comment => comment.render())   
         
     }
-
       
 }

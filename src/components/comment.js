@@ -1,7 +1,8 @@
 class Comment {
 
-    constructor(data){
-        this.data = data     
+    constructor(data, plant){
+        this.data = data 
+        this.plant = plant    
     }
     
     // rendering comments 
