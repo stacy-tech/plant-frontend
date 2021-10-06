@@ -99,7 +99,7 @@ class Plant {
     // upon clicking a plant it renders to its show page with its data/info
     // replaceing the innerHTML with this new one
     renderShow = () => {
-        const {name, difficulty, light, water, imageUrl} = this.data
+        const {name, difficulty, light, water, imageUrl, username} = this.data
         document.getElementById("main").innerHTML = `
         <div class="show"> 
             <h1>${name}</h1>
@@ -107,6 +107,7 @@ class Plant {
             <p>${difficulty}</p>
             <p>${light}</p>
             <p>${water}</p>
+            <p>Listed by: ${username}</p>
             <div class="container"></div>
         </div>
         <br><br>

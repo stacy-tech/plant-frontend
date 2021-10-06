@@ -3,7 +3,7 @@ const modal = new Modal()
 // let user
 
 
-Plant.getPlants()
+// Plant.getPlants()
 
 // user submit form function
 // document.querySelector("form").addEventListener("submit", handleUserSubmit)
