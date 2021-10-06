@@ -3,7 +3,8 @@ class PlantApi {
     constructor(api) {
         this.api = api
     }
-
+     
+    // get all plants from api 
     getPlants = () => fetch(this.api + "/plants").then(res => res.json())  
 
     // post a new plant created from the form
@@ -19,7 +20,7 @@ class PlantApi {
         .then(response => response.json())
     }
 
-    // fetch request to create/find a user if already existed
+    // fetch request to find/create a user
     findOrCreateUser = (username) => {
         return fetch(this.api + "/users", {
             method: 'POST', 
@@ -39,8 +40,7 @@ class PlantApi {
         .then(res => {
             console.log(res)
             return res.json
-        })
-       
+        }) 
     }
 
 }

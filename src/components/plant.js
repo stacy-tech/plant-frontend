@@ -98,11 +98,11 @@ class Plant {
     }
 
     // upon clicking a plant it renders to its show page with its data/info
-    // replaceing the innerHTML with this new one
     renderShow = () => {
-        const {name, difficulty, light, water, imageUrl, username} = this.data
+        // console.log('this', this)
+        const {name, difficulty, light, water, imageUrl, username, id} = this.data
         document.getElementById("main").innerHTML = `
-        <div class="show"> 
+        <div class="show"  id=${id}>
             <h1>${name}</h1>
             <img src="${imageUrl}" alt=${name}/>
             <p>${difficulty}</p>
@@ -116,10 +116,24 @@ class Plant {
         <br><br>
         <button id="delete">Delete</button><br><br><button id="home">Home</button><br>
         `
-        document.getElementById("delete").addEventListener("click", Plant.renderPlants)
+        // delete plant method by id 
+        document.getElementById("delete").addEventListener("click", () => {
+            const id = parseInt(document.getElementsByClassName('show')[0].id)
+            // console.log('id', id)
+            const element = Plant.all.find((el) => el.data.id === id)
+            // console.log('element', element)
+            // console.log('all', Plant.all)
+            api.deletePlant(id).then(() => {
+                Plant.all.splice(Plant.all.indexOf(element), 1)
+                const plants = document.getElementsByClassName('plant-card')
+                for (const plant of plants) {
+                    plant.remove()
+                }
+                Plant.renderPlants()
+            })
+        })
+        // home button click event listener
         document.getElementById("home").addEventListener("click", Plant.renderPlants)
         this.comments.forEach(comment => comment.render())   
-        
     }
-      
 }
