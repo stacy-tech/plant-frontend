@@ -67,6 +67,7 @@ class Plant {
     // Getting my plants (iterating from the api)
     static getPlants = () => {
         api.getPlants().then(plants => {
+            Plant.all = []
             plants.forEach(plant => new Plant(plant))
             this.renderPlants()
         })
