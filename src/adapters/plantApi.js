@@ -32,17 +32,16 @@ class PlantApi {
     }
 
     // delete plant request
-    // deletePlant(id){
-        
-    //     fetch(this.baseUrl + `/plants/${id}`, {
-    //         method: 'DELETE',  
-    //     })
-    //     .then(res => res.json())
-    //     .then(obj => {
-    //         console.log(obj);
-    //         alert('Plant was deleted');
-    //     })
-    // }
+    deletePlant(id){
+        return fetch(this.api + `/plants/${id}`, { 
+            method: 'DELETE'   
+        })
+        .then(res => {
+            console.log(res)
+            return res.json
+        })
+       
+    }
 
 }
 

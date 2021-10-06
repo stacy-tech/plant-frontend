@@ -94,7 +94,7 @@ class Plant {
         if (e.target.tagName == "IMG" || e.target.classList.contains("title")) {
             const id = e.target.closest(".plant-card").dataset.id
             this.find(id).renderShow()
-        }     
+        }   
     }
 
     // upon clicking a plant it renders to its show page with its data/info
@@ -114,8 +114,9 @@ class Plant {
         <br><br>
         <p class="add-comment">Add New Comment</p>
         <br><br>
-        <button id="home">Home</button><br>
+        <button id="delete">Delete</button><br><br><button id="home">Home</button><br>
         `
+        document.getElementById("delete").addEventListener("click", Plant.renderPlants)
         document.getElementById("home").addEventListener("click", Plant.renderPlants)
         this.comments.forEach(comment => comment.render())   
         

@@ -14,10 +14,9 @@ function handleUserSubmit(e){
     api.findOrCreateUser(e.target.username.value).then(userData => {
         user = userData
         Plant.getPlants()
-    })
-        // console.log('user data', userData)
-        // Plant.user = userData
-        // console.log('user submitted', Plant.user)
-       
+    })      
 }
+
+
+
 
