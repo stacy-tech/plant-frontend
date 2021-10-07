@@ -17,7 +17,7 @@ class Comment {
     }
 
     // submits my new comment form to send to my backend
-    static handlesubmit = (e) => {
+    static handlecommentsubmit = (e) => {
        e.preventDefault()
        const newComment = {
            text: e.target.text.value,  
@@ -32,17 +32,14 @@ class Comment {
     // new comment form
     static addCommentForm = () => {
         modal.main.innerHTML = `
-        <h1>Go Green</h1>
         <form>
             <label for="text">Text:</label><br>
             <input type="text" name="text"><br><br>
             <input type="submit" value="Post Comment"><br>
         </form>
         `
-        modal.main.querySelector("form").addEventListener("submit", this.handlesubmit)
+        modal.main.querySelector("form").addEventListener("submit", this.handlecommentsubmit)
         modal.open()
     }
-
-
-    
+   
 }

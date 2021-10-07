@@ -94,7 +94,7 @@ class Plant {
         if (e.target.tagName == "IMG" || e.target.classList.contains("title")) {
             const id = e.target.closest(".plant-card").dataset.id
             this.find(id).renderShow()
-        }   
+        } 
     }
 
     // upon clicking a plant it renders to its show page with its data/info
@@ -115,7 +115,9 @@ class Plant {
         <br><br>
         <button id="delete">Delete</button><br><br><button id="home">Home</button><br>
         `
-        document.getElementById("comment").addEventListener("click", Comment.addCommentForm())
+        // comment button click event listener
+        document.getElementById("comment").addEventListener("click", () => Comment.addCommentForm())
+        
 
         // delete plant method by id 
         document.getElementById("delete").addEventListener("click", () => {
