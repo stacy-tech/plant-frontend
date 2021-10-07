@@ -135,5 +135,6 @@ class Plant {
         // home button click event listener
         document.getElementById("home").addEventListener("click", Plant.renderPlants)
         this.comments.forEach(comment => comment.render())   
+  
     }
 }

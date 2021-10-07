@@ -41,7 +41,7 @@ class PlantApi {
             console.log(res)
             return res.json
         }) 
-    }
+    }  
 
 }
 
