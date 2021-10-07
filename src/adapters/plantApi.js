@@ -43,5 +43,19 @@ class PlantApi {
         }) 
     }  
 
+    createComment = (newComment) => {
+        newComment.user_id = user.id
+        return fetch(this.api + "/comments", {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newComment),
+        })
+        .then(response => response.json())
+    }
+
+
+
 }
 
