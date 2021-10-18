@@ -20,6 +20,7 @@ class Plant {
             <p>${water}</p>
             
         </div>`
+        
     }
     
     // submits my new plant form to send to my backend
@@ -67,7 +68,7 @@ class Plant {
     // Getting my plants (iterating from the api)
     static getPlants = () => {
         api.getPlants().then(plants => {
-            Plant.all = []
+            // Plant.all = []
             plants.forEach(plant => new Plant(plant))
             this.renderPlants()
         })
@@ -84,11 +85,34 @@ class Plant {
         const addPlant = document.createElement("button")
         addPlant.innerText = "Add New Plant"
         addPlant.addEventListener("click", this.addPlantForm)
+        const addAlpha = document.createElement("button")
+        addAlpha.innerText = "Alpha"
+        addAlpha.addEventListener("click",this.sortPlant)
         // append is used to add multiply arguments
-        main.append(plantContainer, addPlant) 
+        main.append(plantContainer, addPlant, addAlpha) 
         this.all.forEach(plant => plant.renderPlantCard())
-        plantContainer.addEventListener("click", this.handlePlantClick)
+        plantContainer.addEventListener("click", this.handlePlantClick)      
     }
+
+    // alphabetizes my plant-cards
+    static sortPlant = (e) => {
+        const plants = Plant.all
+        plants.sort(function(a,b) {
+            if (a.data.name < b.data.name){
+                return -1
+            }
+            else{
+                return 1
+            }
+
+        })   
+        Plant.renderPlants()
+       
+    }
+
+   
+     
+
     // clicks on either the name or image and will produce the plants id 
     static handlePlantClick = (e) => {
         if (e.target.tagName == "IMG" || e.target.classList.contains("title")) {
@@ -115,6 +139,7 @@ class Plant {
         <br><br>
         <button id="delete">Delete</button><br><br><button id="home">Home</button><br>
         `
+
         // comment button click event listener
         document.getElementById("comment").addEventListener("click", () => Comment.addCommentForm())
         
