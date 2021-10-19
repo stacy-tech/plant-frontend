@@ -97,17 +97,17 @@ class Plant {
     // alphabetizes my plant-cards
     static sortPlant = (e) => {
         const plants = Plant.all
+        document.getElementById("main").innerHTML +=
         plants.sort(function(a,b) {
             if (a.data.name < b.data.name){
                 return -1
             }
             else{
                 return 1
-            }
-
-        })   
-        Plant.renderPlants()
-       
+            }   
+        })
+          
+        Plant.renderPlants() 
     }
 
    
